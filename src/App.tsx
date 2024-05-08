@@ -52,9 +52,9 @@ function App() {
   }, [cities, searchQuery]);
 
   const favoriteCities = useMemo(() => {
-    if (!filteredCities) return [];
-    return filteredCities.filter((item) => favoritesCityIds.includes(item.id));
-  }, [filteredCities, favoritesCityIds]);
+    if (!cities) return [];
+    return cities.filter((item) => favoritesCityIds.includes(item.id));
+  }, [cities, favoritesCityIds]);
 
   if (isLoading) {
     return <LoadingState />;
