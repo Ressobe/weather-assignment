@@ -2,6 +2,7 @@ import { WeatherIcon } from "@/components/WeatherIcon.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { TCity } from "@/types";
 import { TbHeart } from "react-icons/tb";
+import { convertTemperature } from "@/utils";
 
 export const CityListItem = ({
   city,
@@ -10,6 +11,8 @@ export const CityListItem = ({
   isFavorite,
   unit,
 }: TCity) => {
+  const temperature =
+    unit === "C" ? temperatureCelsius : convertTemperature(temperatureCelsius);
   return (
     <div
       className={
@@ -24,7 +27,7 @@ export const CityListItem = ({
         </small>
       </div>
       <strong className={"ml-auto"}>
-        {temperatureCelsius} °{unit}
+        {temperature} °{unit}
       </strong>
 
       <Button

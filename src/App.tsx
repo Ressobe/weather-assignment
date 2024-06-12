@@ -3,7 +3,7 @@ import { Header } from "@/components/ui/Header.tsx";
 import { CityListCard } from "@/components/CityListCard.tsx";
 import { TemperatureUnitSelect } from "@/components/TemperatureUnitSelect.tsx";
 import { useQuery } from "@tanstack/react-query";
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { LoadingState } from "./components/LoadingState";
 import { ErrorState } from "./components/ErrorState";
 import { TDataItem, TemperatureUnit } from "./types";
@@ -20,11 +20,11 @@ function App() {
   const [temperatureUnit, setTemperatureUnit] =
     useState<TemperatureUnit>("CELSIUS");
 
-  const handleTemperatureUnitChange = useCallback((unit: TemperatureUnit) => {
+  const handleTemperatureUnitChange = (unit: TemperatureUnit) => {
     setTemperatureUnit(unit);
-  }, []);
+  };
 
-  const handleToggleFavorite = useCallback((id: string) => {
+  const handleToggleFavorite = (id: string) => {
     setFavoritesCityIds((prevIds) => {
       if (prevIds.includes(id)) {
         return prevIds.filter((cityId) => cityId !== id);
@@ -32,11 +32,11 @@ function App() {
         return [...prevIds, id];
       }
     });
-  }, []);
+  };
 
-  const handleSearchChange = useCallback((query: string) => {
+  const handleSearchChange = (query: string) => {
     setSearchQuery(query);
-  }, []);
+  };
 
   const { data: cities, isLoading } = useQuery({
     queryFn: fetchWeather,

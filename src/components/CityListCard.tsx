@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/card.tsx";
 import { CityListItem } from "@/components/CityListItem.tsx";
 import { TDataItem, TemperatureUnit } from "@/types";
-import { convertTemperature } from "@/utils";
 
 type CityListCardProps = {
   handleClickFavorite: (id: string) => void;
@@ -43,10 +42,7 @@ export const CityListCard = ({
                     id={item.id}
                     city={item.city}
                     description={item.description}
-                    temperatureCelsius={convertTemperature(
-                      temperatureUnit,
-                      item.temperatureCelsius,
-                    )}
+                    temperatureCelsius={item.temperatureCelsius}
                     isFavorite={favoriteCityIds.includes(item.id)}
                     unit={unit}
                   />
